@@ -107,5 +107,25 @@ namespace ModelOptimizerUnitTest
                 typeof(System.Data.Entity.DbSet<ModelOptimizer111314.DataAccess.Weight>));
         }
 
+        [TestMethod]
+        public void SymbolWeightsViewModelWeightsPropertyHasData()
+        {
+            int x = 0;
+            SymbolWeightsViewModel _test = new SymbolWeightsViewModel();
+            foreach (Weight w in _test.Weights)
+            {
+                x++;
+            }
+            Assert.AreEqual(4, x);
+        }
+
+        [TestMethod]
+        public void SymbolWeightsViewModelWeight_ExistsIsFalse()
+        {
+            SymbolWeightsViewModel _test = new SymbolWeightsViewModel();
+            Weight result = _test.Weights.Where(w => w.Symbol == "VB").FirstOrDefault();
+            Assert.IsFalse(result.Weight_Exists);
+            _test.Dispose();
+        }
     }
 }
