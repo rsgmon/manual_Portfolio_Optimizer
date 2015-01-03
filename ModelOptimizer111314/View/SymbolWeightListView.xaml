@@ -8,8 +8,15 @@
     
     <StackPanel>
         <DataGrid ItemsSource="{Binding Weights, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
-              AutoGenerateColumns="True">
+              AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="SecurityWeight" Binding="{Binding Security_Weight}"/>
+                <DataGridTextColumn Header="BenchmarkWeight" Binding="{Binding Benchmark_Weight}"/>
+                <DataGridTextColumn Header="ActiveWeight" Binding="{Binding ActiveWeight}"/>
+            </DataGrid.Columns>
+            
     </DataGrid>
+        <ListBox ItemsSource="{Binding ActWeight2}"/>
         <Button Name="SaveChanges" Height="32" Command="{Binding UpdateCommand}">
         </Button>
     </StackPanel>

@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BenchMarkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Weights">
+          <Key>
+            <PropertyRef Name="Symbol_and_BenchmarkID" />
+          </Key>
+          <Property Name="BenchmarkID" Type="int" Nullable="false" />
+          <Property Name="Symbol" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Benchmark_Weight" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="Security_Weight" Type="decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="Symbol_and_BenchmarkID" Type="varchar" MaxLength="35" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Weight_Exists" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BenchMarkModelStoreContainer">
+          <EntitySet Name="Weights" EntityType="Self.Weights" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BenchMarkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Weight">
+          <Key>
+            <PropertyRef Name="Symbol_and_BenchmarkID" />
+          </Key>
+          <Property Name="BenchmarkID" Type="Int32" Nullable="false" />
+          <Property Name="Symbol" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Benchmark_Weight" Type="Decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="Security_Weight" Type="Decimal" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="Symbol_and_BenchmarkID" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Weight_Exists" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BenchMarkEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Weights" EntityType="Self.Weight" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BenchMarkModelStoreContainer" CdmEntityContainer="BenchMarkEntities">
+          <EntitySetMapping Name="Weights">
+            <EntityTypeMapping TypeName="BenchMarkModel.Weight">
+              <MappingFragment StoreEntitySet="Weights">
+                <ScalarProperty Name="BenchmarkID" ColumnName="BenchmarkID" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="Benchmark_Weight" ColumnName="Benchmark_Weight" />
+                <ScalarProperty Name="Security_Weight" ColumnName="Security_Weight" />
+                <ScalarProperty Name="Symbol_and_BenchmarkID" ColumnName="Symbol_and_BenchmarkID" />
+                <ScalarProperty Name="Weight_Exists" ColumnName="Weight_Exists" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
