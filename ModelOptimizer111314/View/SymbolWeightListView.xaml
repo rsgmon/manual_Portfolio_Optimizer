@@ -12,11 +12,17 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="SecurityWeight" Binding="{Binding Security_Weight}"/>
                 <DataGridTextColumn Header="BenchmarkWeight" Binding="{Binding Benchmark_Weight}"/>
-                <DataGridTextColumn Header="ActiveWeight" Binding="{Binding ActiveWeight}"/>
+                <DataGridTextColumn Header="ActiveWeight" Binding="{Binding ActiveWeight}" IsReadOnly="True"/>
             </DataGrid.Columns>
             
     </DataGrid>
-        <ListBox ItemsSource="{Binding ActWeight2}"/>
+        <ItemsControl ItemsSource="{Binding Weights}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding ActiveWeight}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
         <Button Name="SaveChanges" Height="32" Command="{Binding UpdateCommand}">
         </Button>
     </StackPanel>

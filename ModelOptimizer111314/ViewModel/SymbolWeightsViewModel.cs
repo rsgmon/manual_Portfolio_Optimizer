@@ -21,22 +21,6 @@ namespace ModelOptimizer111314.ViewModel
             private set;
         }
 
-        public ObservableCollection<decimal> ActWeight2
-        {
-            get;
-            set;
-        }
-
-        ObservableCollection<decimal> Retrieve()
-        {
-            ObservableCollection<decimal> temp = new ObservableCollection<decimal>();
-            foreach (var item in Weights)
-            {
-                temp.Add(item.ActiveWeight);
-            }
-            return temp;
-        }
-
         public BenchMarkEntities Context
         {
             get { return _context; }
@@ -47,7 +31,6 @@ namespace ModelOptimizer111314.ViewModel
             _context = new BenchMarkEntities();
             _context.Weights.Load();
             this.Weights = _context.Weights.Local;
-            ActWeight2 = Retrieve();
         }
 
         ~SymbolWeightsViewModel()
